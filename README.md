@@ -53,7 +53,7 @@ O recrutador deve ser capaz de usar todas as funções do sistema após um trein
 
 
 <h3 id="prototipo">Protótipo</h3>
-Protótipo _(Será entregue no dia 24/05)_
+Protótipo (Será entregue no dia 24/05)
 
  <h3 id="equipe">Equipe</h3>
 
