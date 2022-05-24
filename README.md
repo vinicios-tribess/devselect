@@ -9,12 +9,12 @@ Para visualizar a aplicação clique aqui _(Será entregue no dia 26/05)_ <br/> 
 
 ### Indice
 - <a href="#desafio">Desafio</a>
-- <a href="solucao">Solução</a>
-- <a href="RF">Requisitos funcionais</a>
-- <a href="NF">Requisitos não funcionais</a>
-- <a href="tecnologias">Tecnologias utilizadas</a>
-- <a href="protótipo">Protótipo</a>
-- <a href="equipe">Equipe</a> <br/> <br/>
+- <a href="#solucao">Solução</a>
+- <a href="#RF">Requisitos funcionais</a>
+- <a href="#NF">Requisitos não funcionais</a>
+- <a href="#tecnologias">Tecnologias utilizadas</a>
+- <a href="#protótipo">Protótipo</a>
+- <a href="#equipe">Equipe</a> <br/> <br/>
 
 <h3 id="desafio">Desafio</h3>
 Para melhorar qualquer processo deve-se saber qual é a parte que está causando o problema. Em conversa com as mentoras no primeiro dia do Hackathon, perguntamos quais eram as maiores dificuldades na contratação de profissionais para a área de tecnologia. <br/> <br/> Após ouvir e discutir sobre a questão, notamos que dois pontos sempre ficavam no centro do debate. A primeira, era a dificuldade de encontrar profissionais que se identificavam com o produto ou a empresa e a segunda questão seria o cansaço que um processo muito longo de seleção causa tanto para o recrutador quanto para o candidato. <br/> <br/> Sobre essa última questão, utilizamos um formulário para perguntar a candidatos de programas de treinamento até quantas fases eles estariam dispostos a fazer para conseguir uma vaga muito desejada, 50% assinalaram até 3 fases, no máximo. 
