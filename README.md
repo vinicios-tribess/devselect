@@ -5,7 +5,7 @@ A proposta se refere à uma solução para melhorar o processo de seleção de p
 
 ## Preview
 
-Para visualizar a aplicação clique aqui _(Será entregue no dia 26/05)_ <br/> <br/>
+Para visualizar a aplicação [clique aqui](http://devselect.tech/) <br/> <br/>
 
 ### Indice
 - <a href="#desafio">Desafio</a>
