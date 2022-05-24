@@ -62,6 +62,6 @@ Protótipo (Será entregue no dia 24/05)
 | João                                | Back-end                    | [Github](https://github.com/JoaoRudolf)       |
 | Julia                               | Front-end                   | [Github](https://github.com/JuliaJPereira)    |
 | Lucas                               | UX/UI e Front-end           | [Github](https://github.com/chavesluucas)     |
-| Paula                               | Documentação e Front-end    | [Github](https://github.com/Paula-Adriana)    |
+| Paula                               | Documentação e back-end    | [Github](https://github.com/Paula-Adriana)    |
 | Vinicios                            | Back-end                    | [Github](https://github.com/vinicios-tribess) |
 | Yuri                                |  Front-end                  | [Github](https://github.com/yurikb)           |
