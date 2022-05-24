@@ -21,7 +21,7 @@ Para melhorar qualquer processo deve-se saber qual é a parte que está causando
 Com base nessas duas questões principais, pensamos em uma solução que facilitasse e reduzisse o processo de seleção de candidatos em programas de treinamento.<br/> <br/>
 
 <h3 id="solucao">Solução</h3>
-O grupo apresenta como solução o DEV```<select/>```. Uma ferramenta que irá facilitar o processo de seleção de candidatos. <br/> <br/>
+O grupo apresenta como solução o DEVSelect. Uma ferramenta que irá facilitar o processo de seleção de candidatos. <br/> <br/>
 O processo de seleção ocorrerá em até três fases, sendo a primeira o match, a segunda envolverá testes (técnico/língua estrangeira) e a terceira uma entrevista. 
 A funcionalidade match foi pensada com base em aplicativos de relacionamento. Caso as características de procura sejam as mesmas, o perfil dos usuários é conectado. <br/> <br/> Da mesma forma, no DevsSelect, o recrutador decide quais requisitos de soft e hard skills o treinamento necessita e o candidato, ao preencher o formulário de intenção, selecionará as habilidades que ele domina. Se forem as mesmas que o recrutador deseja, o match acontece. <br/> <br/>
 
