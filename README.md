@@ -3,9 +3,13 @@
 Projeto desenvolvido para o Hackathon +Devs2Blu. 
 A proposta se refere à uma solução para melhorar o processo de seleção de programas de treinamento para a área de desenvolvimento. <br/>
 
+<h3 id="prototipo">Protótipo</h3>
+<a href="https://www.figma.com/file/Y71mJGWK9d4ndTmK26mrKw/DevSelect?node-id=0%3A1">Cliquei aqui</a> para acessar o protótipo.
+
+
 ## Preview
 
-Para visualizar a aplicação [clique aqui](http://devselect.tech/) <br/> <br/>
+Para visualizar a aplicação [clique aqui](http://devselect.tech/). <br/> <br/>
 
 ### Indice
 - <a href="#desafio">Desafio</a>
@@ -13,7 +17,6 @@ Para visualizar a aplicação [clique aqui](http://devselect.tech/) <br/> <br/>
 - <a href="#RF">Requisitos funcionais</a>
 - <a href="#NF">Requisitos não funcionais</a>
 - <a href="#tecnologias">Tecnologias utilizadas</a>
-- <a href="#protótipo">Protótipo</a>
 - <a href="#equipe">Equipe</a> <br/> <br/>
 
 <h3 id="desafio">Desafio</h3>
@@ -50,10 +53,7 @@ O recrutador deve ser capaz de usar todas as funções do sistema após um trein
 | MySQL                                   | Banco de dados            |
 | Angular e Bootstrap                     | Front-end                 |
 | Figma                                   | Prototipação                 |
-
-
-<h3 id="prototipo">Protótipo</h3>
-Protótipo (Será entregue no dia 24/05)
+<br/> <br/>
 
  <h3 id="equipe">Equipe</h3>
 
