@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+    <div class="container">
+      <div class="row">
+        <div class="col mt-4">
+          <h4>Habilidades</h4>
+          <div class="container-soft-skills">
+            <button
+              type="button"
+              *ngFor="let softSkill of arraySoftSkills"
+              class="btn btn-skills {{
+                this.getSoftSkillStyle(softSkill)
+              }}"
+              (click)="this.onClickSoftSkill(softSkill)"
+            >
+              {{ softSkill }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col mt-4">
+          <h4>Conhecimentos</h4>
+          <div class="container-soft-skills">
+            <button
+              type="button"
+              *ngFor="let hardSkill of arrayHardSkills"
+              class="btn btn-skills {{
+                this.getHardSkillStyle(hardSkill)
+              }}"
+              (click)="this.onClickHardSkill(hardSkill)"
+            >
+              {{ hardSkill }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

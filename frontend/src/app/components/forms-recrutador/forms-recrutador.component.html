@@ -1,0 +1,117 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="okInsert" class="container mt-3">
+  <div class="row">
+    <div class="alert alert-success" role="alert">
+      Curso <b>{{ formCurso.idCurso }} - {{ formCurso.nomeCurso }}</b> criado
+      com sucesso!
+    </div>
+  </div>
+</div>
+
+<form class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Campo do nome  -->
+      <div class="form-group col-12 mt-4">
+        <label for="nomeCurso">Nome do curso</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nomeCurso"
+          name="nomeCurso"
+          aria-describedby="Nome do Curso"
+          placeholder="Nome do curso"
+          [(ngModel)]="formCurso.nomeCurso"
+        />
+      </div>
+
+      <!-- Campo do E-mail -->
+      <div class="form-group col-12 mt-4">
+        <label for="duracaoCurso">Duração do Curso</label>
+        <input
+          type="text"
+          class="form-control"
+          id="duracaoCurso"
+          name="duracao"
+          aria-describedby="Duração do Curso"
+          placeholder="Duração do curso"
+          [(ngModel)]="formCurso.duracaoCurso"
+        />
+      </div>
+
+      <!-- Campo do genero  -->
+      <div class="form-group col-12 mt-4">
+        <label for="endereco">Endereço do curso</label>
+        <input
+          type="text"
+          class="form-control"
+          id="endereco"
+          name="endereco"
+          aria-describedby="Endereço do curso"
+          placeholder="Endereço do curso"
+          [(ngModel)]="formCurso.localCurso"
+        />
+      </div>
+
+      <!-- Campo da Qtd de vagas -->
+      <div class="form-group col-12 mt-4">
+        <label for="qtdVagas">Quantidade de Vagas</label>
+        <input
+          type="text"
+          class="form-control"
+          id="qtdVagas"
+          name="qtdVagas"
+          aria-describedby="Quantidade de vagas"
+          placeholder="Quantidade de vagas"
+          [(ngModel)]="formCurso.quantidadeVagasCurso"
+        />
+      </div>
+
+      <!-- Campo Turno -->
+      <div class="form-group col-12 mt-4">
+        <label for="periodo">Período</label>
+        <input
+          type="text"
+          class="form-control"
+          id="periodo"
+          name="periodo"
+          aria-describedby="Período do curso"
+          placeholder="Período"
+          [(ngModel)]="formCurso.turnoCurso"
+        />
+      </div>
+
+      <!-- Campo Descrição -->
+      <div class="form-group col-12 mt-4">
+        <label for="descricaoCurso">Descrição</label>
+        <textarea
+          type="textarea"
+          class="form-control"
+          id="descricaoCurso"
+          rows="3"
+          name="descricao"
+          aria-describedby="Descrição do curso"
+          [(ngModel)]="formCurso.descricaoCursoCurso"
+        ></textarea>
+      </div>
+
+      <app-skills></app-skills>
+
+      <!-- botão  -->
+      <div class="col-lg-4 offset-lg-4 text-center mb-4 mt-5">
+        <div class="col-sm-10">
+          <button
+            (click)="addCurso(formCurso)"
+            type="submit"
+            class="btn btn-primary mr-3"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<app-footer></app-footer>
