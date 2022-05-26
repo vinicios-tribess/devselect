@@ -21,15 +21,22 @@ Ao clicar em “Criar curso”, o recrutador inicia o cadastro de um curso para 
 ![Tela recrutador](https://github.com/Paula-Adriana/devselect/blob/main/Documentacao/Prototipos/tela-recrutador.png)
 
 #### Área do candidato
-Nesta tela, o candidato preenche o formulário para se cadastrar em uma turma de treinamento. Deve ser informado nesta tela os dados pessoais e de endereço assim como selecionar as habilidades e conhecimentos com as quais ele se identifica. A quantidade de habilidades a serem selecionadas não deve ser maior que o número de habilidades selecionadas pelo recrutador. Haverá um botão “Candidatar-se” para salvar as informações fornecidas. Ao clicar no botão, o sucesso da operação é indicado através de uma pop-up.  
+Nesta tela, o candidato preenche o formulário para se cadastrar em uma turma de treinamento. Devem ser informados os dados pessoais e de endereço assim como selecionar as habilidades e conhecimentos com as quais o candidato se identifica. A quantidade de habilidades a serem selecionadas não deve ser maior que o número de habilidades selecionadas pelo recrutador. Haverá um botão “Candidatar-se” para salvar as informações fornecidas. Ao clicar no botão, o sucesso da operação é indicado através de uma pop-up.  
 
 ![tela-candidadto](https://github.com/Paula-Adriana/devselect/blob/main/Documentacao/Prototipos/tela-candidato.png)
 
 #### Tela de matches
-A tela de matches pertence a área do recrutador e consiste no resultado da rotina de código que trará os resultados dos candidatos que tiveram mais de 70% de afinidade com as habilidades e conhecimentos selecionados por ambas as partes, recrutador e candidato. 
-É apresentada em ordem decrescente de porcentagem, com as respectivas escolhas de habilidades e conhecimento selecionados. 
+A tela de matches pertence a área do recrutador e consiste no resultado da rotina de código que trará os resultados dos candidatos contendo as habilidades e conhecimentos selecionados que coincidem com aquelas que o recrutador selecionou. 
 
 ![tela-matches](https://github.com/Paula-Adriana/devselect/blob/main/Documentacao/Prototipos/Tela%20dos%20matches.png)
+
  
+
+### Detalhes técnicos
+Para saber quais são as características selecionadas pelo candidato e pelo recrutador, foi construído um método que compara as listas que contém as características selecionadas por ambas as partes. Para isso, foi utilizado o método iterador forEach de forma aninhada, onde o laço externo que possui a lista das características desejáveis para o curso, percorre o laço interno contendo a lista das características que o candidato escolheu.
+
+Para comparar efetivamente se as strings de características das listas citadas acima são idênticas, foi utilizado o método equals atrelado a uma variável booleana e através da estrutura condicional If/else, se a condição for verdadeira, o cômputo das características iguais é somado em uma variável para controle.
+
+![metodo-save](https://github.com/Paula-Adriana/devselect/blob/main/Documentacao/Prototipos/metodo-save.png) 
 
 
