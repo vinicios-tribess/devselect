@@ -1,10 +1,10 @@
 export class Endereco {
-  cepEndereco?: string;
-  logradouroEndereco?: string;
-  numeroEndereco?: string;
-  bairroEndereco?: string;
-  cidadeEndereco?: string;
-  estadoEndereco?: string;
+  cepPessoa?: string;
+  logradouroPessoa?: string;
+  numeroPessoa?: number;
+  bairroPessoa?: string;
+  cidadePessoa?: string;
+  estadoPessoa?: string;
 
   constructor(obj: Partial<Endereco>)
 {

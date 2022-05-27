@@ -47,7 +47,7 @@
           class="form-control"
           name="genero"
           aria-describedby="Gênero"
-          [(ngModel)]="formPessoa.generoPessoaPessoa"
+          [(ngModel)]="formPessoa.generoPessoa"
         >
           <option value="M">Masculino</option>
           <option value="F">Feminino</option>
@@ -127,7 +127,7 @@
             (blur)="getViaCEP($event)"
             aria-describedby="CEP (00000-000)"
             placeholder="CEP"
-            [(ngModel)]="formPessoa.cepEndereco"
+            [(ngModel)]="formPessoa.enderecoPessoa!.cepPessoa"
             mask="00000-000"
           />
           <a
@@ -147,7 +147,7 @@
             name="uf"
             aria-describedby="UF"
             placeholder="Estado"
-            [(ngModel)]="formPessoa.estadoEndereco"
+            [(ngModel)]="formPessoa.enderecoPessoa!.estadoPessoa"
           />
         </div>
       </div>
@@ -162,7 +162,7 @@
               name="logradouro"
               aria-describedby="logradouroEndereco"
               placeholder="Endereço"
-              [(ngModel)]="formPessoa.logradouroEndereco"
+              [(ngModel)]="formPessoa.enderecoPessoa!.logradouroPessoa"
             />
           </div>
           <div class="col-3">
@@ -173,7 +173,7 @@
               name="numero"
               aria-describedby="numero"
               placeholder="Numero"
-              [(ngModel)]="formPessoa.numeroEndereco"
+              [(ngModel)]="formPessoa.enderecoPessoa!.numeroPessoa"
             />
           </div>
         </div>
@@ -187,7 +187,7 @@
             name="cidade"
             aria-describedby="Cidade"
             placeholder="Cidade"
-            [(ngModel)]="formPessoa.cidadeEndereco"
+            [(ngModel)]="formPessoa.enderecoPessoa!.cidadePessoa"
           />
         </div>
 
@@ -199,7 +199,7 @@
             name="bairro"
             aria-describedby="Bairro"
             placeholder="Bairro"
-            [(ngModel)]="formPessoa.bairroEndereco"
+            [(ngModel)]="formPessoa.enderecoPessoa!.bairroPessoa"
           />
         </div>
 
@@ -212,14 +212,14 @@
             placeholder="Curso"
           >
             <option value="0" checked>Selecione...</option>
-            <option *ngFor="let cursos of listaCursos$ | async" value="">
+            <option *ngFor="let cursos of listaCursos$ | async" value="{{ cursos.idCurso }}">
               {{ cursos.idCurso }} - {{ cursos.nomeCurso }} -
               {{ cursos.descricaoCursoCurso }}
             </option>
           </select>
         </div>
 
-        <app-skills></app-skills>
+        <app-skills [softSkillsSelecionadas]="this.softSkillsSelecionadas"></app-skills>
       </div>
 
       <!-- botão  -->
