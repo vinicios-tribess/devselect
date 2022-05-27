@@ -25,6 +25,12 @@ public class CursoService {
 		return listaDTOs;		
 	}
 	
+	public CursoDTO getById(Long id) throws Exception {
+		Curso contrato = cursoRepository.findById(id)
+								.orElseThrow(
+										() -> new Exception("Curso não encontrado"));
+		return contrato.getDTO();
+	}
 	
 	public CursoDTO save (CursoDTO curso) {
 		Curso cursoEntidade = cursoRepository.save(curso.convertToEntity());
