@@ -1,6 +1,6 @@
 import { Pessoa } from 'src/app/models/pessoa/pessoa';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-skills',
@@ -10,16 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class SkillsComponent implements OnInit {
   /* SOFT SKILLS */
   arraySoftSkills = [
-    'Comunicativo',
-    'Criativo',
-    'Trabalho em equipe',
-    'Quieto',
-    'Curioso',
-    'Trabalho melhor sozinho',
+    'Comunicação', 'Criatividade', 'Trabalho em equipe', 'Escrita','Curiosidade',
+    'Liderança', 'Flexibilidade', 'Colaboração','Inteligência Emocional','Organização',
+    'Resiliência', 'Capacidade de Resolver Problemas','Trabalhar sob Pressão ', 'Negociação','Ética'
   ];
 
   softSkillsDesejadas = ['Comunicativo', 'Quieto', 'Criativo'];
 
+  @Input()
   softSkillsSelecionadas: string[] = [];
 
   /* HARD SKILLS */

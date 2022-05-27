@@ -19,18 +19,17 @@ export class FormsComponent implements OnInit {
 
   showForm = new Subject<boolean>();
 
+  curso$ = new Observable<Curso>();
+
   formPessoa: Pessoa = new Pessoa({});
 
   okInsert: boolean = false;
 
   /* SOFT SKILLS */
   arraySoftSkills = [
-    'Comunicativo',
-    'Criativo',
-    'Trabalho em equipe',
-    'Quieto',
-    'Curioso',
-    'Trabalho melhor sozinho',
+    'Comunicação', 'Criatividade', 'Trabalho em equipe', 'Escrita','Curiosidade',
+    'Liderança', 'Flexibilidade', 'Colaboração','Inteligência Emocional','Organização',
+    'Resiliência', 'Capacidade de Resolver Problemas','Trabalhar sob Pressão ', 'Negociação','Ética'
   ];
 
   softSkillsDesejadas = ['Comunicativo', 'Quieto', 'Criativo'];
@@ -66,6 +65,21 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {
     this.listaCursos$ = this.cursoService.getAll();
+    this.loadCurso(1)
+  }
+
+  loadCurso(id: number) {
+    this.curso$ = this.cursoService.getById(id);
+    this.cursoService
+      .getById(id)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.formPessoa.cursoPessoa = response;
+
+        }
+      );
+
   }
 
   /* SOFT SKILLS */
@@ -108,42 +122,42 @@ export class FormsComponent implements OnInit {
   }
 
   // API do BUSCA CEP com ENDEREÇO PESSOA
-  // getViaCEP(cep: FocusEvent) {
-  //   if ((cep.target as HTMLInputElement)?.value) {
-  //     let inputCEP = (cep.target as HTMLInputElement)?.value;
-  //     const cepResponse = this.cepService.getCep(inputCEP);
-  //     cepResponse.subscribe((cepModel) => {
-  //       this.formPessoa.enderecoPessoa = new Endereco({
-  //         cepEndereco: cepModel.cep,
-  //         logradouroEndereco: cepModel.logradouro,
-  //         numeroEndereco: '',
-  //         bairroEndereco: cepModel.bairro,
-  //         cidadeEndereco: cepModel.localidade,
-  //         estadoEndereco: cepModel.uf,
-  //       });
-  //       this.showForm.next(true);
-  //       console.log(this.formPessoa);
-  //     });
-  //   }
-  // }
-
-  // API do BUSCA CEP
   getViaCEP(cep: FocusEvent) {
     if ((cep.target as HTMLInputElement)?.value) {
       let inputCEP = (cep.target as HTMLInputElement)?.value;
       const cepResponse = this.cepService.getCep(inputCEP);
       cepResponse.subscribe((cepModel) => {
-        this.formPessoa.cepEndereco = cepModel.cep;
-        this.formPessoa.logradouroEndereco = cepModel.logradouro;
-        this.formPessoa.numeroEndereco = cepModel.numero;
-        this.formPessoa.bairroEndereco = cepModel.bairro;
-        this.formPessoa.cidadeEndereco = cepModel.localidade;
-        this.formPessoa.estadoEndereco = cepModel.uf;
+        this.formPessoa.enderecoPessoa = new Endereco({
+          cepPessoa: cepModel.cep,
+          logradouroPessoa: cepModel.logradouro,
+          numeroPessoa: cepModel.numero,
+          bairroPessoa: cepModel.bairro,
+          cidadePessoa: cepModel.localidade,
+          estadoPessoa: cepModel.uf,
+        });
         this.showForm.next(true);
         console.log(this.formPessoa);
       });
     }
   }
+
+  // // API do BUSCA CEP sem ENDEREÇO PESSOA
+  // getViaCEP(cep: FocusEvent) {
+  //   if ((cep.target as HTMLInputElement)?.value) {
+  //     let inputCEP = (cep.target as HTMLInputElement)?.value;
+  //     const cepResponse = this.cepService.getCep(inputCEP);
+  //     cepResponse.subscribe((cepModel) => {
+  //       this.formPessoa.cepEndereco = cepModel.cep;
+  //       this.formPessoa.logradouroEndereco = cepModel.logradouro;
+  //       this.formPessoa.numeroEndereco = cepModel.numero;
+  //       this.formPessoa.bairroEndereco = cepModel.bairro;
+  //       this.formPessoa.cidadeEndereco = cepModel.localidade;
+  //       this.formPessoa.estadoEndereco = cepModel.uf;
+  //       this.showForm.next(true);
+  //       console.log(this.formPessoa);
+  //     });
+  //   }
+  // }
 
   // Formatação de DATA
   getDateFormated(): any {
@@ -153,38 +167,47 @@ export class FormsComponent implements OnInit {
 
   // Adicionar candidato
   addPessoa(formPessoa: Pessoa) {
-    this.cursoService.getById(1).subscribe(
-      resp => this.formPessoa.cursoPessoa
-    )
 
-    this.hardSkillsSelecionadas.forEach(element => {
-      this.todasSkillsSelecionadas.push(element)
-    });
-
-    this.softSkillsSelecionadas.forEach(element => {
-      this.todasSkillsSelecionadas.push(element)
-    });
-
-    this.formPessoa.caracteristicasPessoa = this.todasSkillsSelecionadas;
-
-
-    this.pessoaService.postPessoa(formPessoa).subscribe((pessoa) => {
-      if (!(typeof pessoa.idPessoa == 'undefined') && pessoa.idPessoa > 0) {
-        this.okInsert = true;
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Cadastro realizado com sucesso!',
-          text: 'Em breve entraremos em contato com você.',
-          showConfirmButton: false,
-          timer: 2500,
+    if(!formPessoa.cursoPessoa?.idCurso) {
+      return;
+    }
+      
+    console.log(this.hardSkillsSelecionadas)
+        this.hardSkillsSelecionadas.forEach(element => {
+          this.todasSkillsSelecionadas.push(element)
         });
-        setTimeout(() => {
-          this.okInsert = false;
-          this.resetForm();
-        }, 5000);
-      }
-    });
+    
+        this.softSkillsSelecionadas.forEach(element => {
+          this.todasSkillsSelecionadas.push(element)
+        });
+        
+        console.log(this.todasSkillsSelecionadas);
+        this.formPessoa.caracteristicasPessoa = this.todasSkillsSelecionadas;
+    
+    
+        this.pessoaService.postPessoa(formPessoa).subscribe((pessoa) => {
+          if (!(typeof pessoa.idPessoa == 'undefined') && pessoa.idPessoa > 0) {
+            this.okInsert = true;
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Cadastro realizado com sucesso!',
+              text: 'Em breve entraremos em contato com você.',
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            setTimeout(() => {
+              this.okInsert = false;
+              this.resetForm();
+            }, 5000);
+          }
+        });
+      
+ 
+
+      
+      
+
   }
 
   resetForm() {

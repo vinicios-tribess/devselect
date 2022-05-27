@@ -7,20 +7,15 @@ export class Pessoa {
   cpfPessoa?: string;
   rgPessoa?: string;
 
-  cepEndereco?: string;
-  logradouroEndereco?: string;
-  numeroEndereco?: number;
-  bairroEndereco?: string;
-  cidadeEndereco?: string;
-  estadoEndereco?: string;
+  enderecoPessoa: Endereco = new Endereco({});
 
   emailPessoa?: string;
   telefonePessoa?: string;
   dataNascPessoa?: any;
-  generoPessoaPessoa?: string;
+  generoPessoa?: string;
   matchesPessoa?: number;
   cursoPessoa?: Curso = new Curso({});
-  caracteristicasPessoa? = new Array<String>();
+  caracteristicasPessoa? = new Array<string>();
 
   constructor(obj: Partial<Pessoa>) {
     Object.assign(this, obj);

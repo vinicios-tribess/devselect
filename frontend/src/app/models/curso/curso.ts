@@ -6,7 +6,7 @@ export class Curso {
   quantidadeVagasCurso?: number;
   turnoCurso?: string;
   descricaoCursoCurso?: string;
-  caracteristicasCurso? = Array<String>();
+  caracteristicasCurso? = new Array<string>();
 
   constructor(obj: Partial<Curso>) {
     Object.assign(this, obj);
