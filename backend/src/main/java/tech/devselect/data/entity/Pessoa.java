@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -51,7 +52,7 @@ public class Pessoa {
 
 	private int matches;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Curso curso;
 
 	@ElementCollection
