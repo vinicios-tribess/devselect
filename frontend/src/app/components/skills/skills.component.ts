@@ -1,6 +1,6 @@
 import { Pessoa } from 'src/app/models/pessoa/pessoa';
 import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-skills',
@@ -14,8 +14,6 @@ export class SkillsComponent implements OnInit {
     'Liderança', 'Flexibilidade', 'Colaboração','Inteligência Emocional','Organização',
     'Resiliência', 'Capacidade de Resolver Problemas','Trabalhar sob Pressão ', 'Negociação','Ética'
   ];
-
-  softSkillsDesejadas = ['Comunicativo', 'Quieto', 'Criativo'];
 
   @Input()
   softSkillsSelecionadas: string[] = [];
@@ -39,6 +37,7 @@ export class SkillsComponent implements OnInit {
     'Orientação a Objetos',
   ];
 
+  @Input()
   hardSkillsSelecionadas: string[] = [];
 
   constructor() {}
@@ -69,6 +68,7 @@ export class SkillsComponent implements OnInit {
   onClickHardSkill(skill: string): void {
     if (this.hardSkillsSelecionadas.indexOf(skill) === -1) {
       this.hardSkillsSelecionadas.push(skill);
+      console.log(skill)
     } else {
       this.hardSkillsSelecionadas = this.hardSkillsSelecionadas.filter(
         (x) => x !== skill

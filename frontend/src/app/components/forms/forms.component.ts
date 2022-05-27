@@ -32,10 +32,6 @@ export class FormsComponent implements OnInit {
     'Resiliência', 'Capacidade de Resolver Problemas','Trabalhar sob Pressão ', 'Negociação','Ética'
   ];
 
-  softSkillsDesejadas = ['Comunicativo', 'Quieto', 'Criativo'];
-
-  softSkillsSelecionadas: string[] = [];
-
   /* HARD SKILLS */
   arrayHardSkills = [
     'HTML',
@@ -52,8 +48,8 @@ export class FormsComponent implements OnInit {
     'C#',
   ];
 
+  softSkillsSelecionadas: string[] = [];
   hardSkillsSelecionadas: string[] = [];
-
   todasSkillsSelecionadas: string[] = [];
 
   constructor(
@@ -65,7 +61,6 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {
     this.listaCursos$ = this.cursoService.getAll();
-    this.loadCurso(1)
   }
 
   loadCurso(id: number) {
@@ -76,49 +71,17 @@ export class FormsComponent implements OnInit {
         (response) => {
           console.log(response);
           this.formPessoa.cursoPessoa = response;
-
         }
       );
 
   }
 
-  /* SOFT SKILLS */
-  onClickSoftSkill(skill: string): void {
-    if (this.softSkillsSelecionadas.indexOf(skill) === -1) {
-      this.softSkillsSelecionadas.push(skill);
-    } else {
-      this.softSkillsSelecionadas = this.softSkillsSelecionadas.filter(
-        (x) => x !== skill
-      );
+  onChange(event: any) {
+    const status = (event.target as HTMLSelectElement)?.value;
+    console.log(status);
+    if(status){
+      this.loadCurso(parseInt(status))
     }
-  }
-
-  getSoftSkillStyle(skill: string): string {
-    if (this.softSkillsSelecionadas.indexOf(skill) !== -1) {
-      return 'btn-selecionada';
-    }
-
-    return 'btn-nao-selecionada';
-  }
-
-  /* HARD SKILLS */
-
-  onClickHardSkill(skill: string): void {
-    if (this.hardSkillsSelecionadas.indexOf(skill) === -1) {
-      this.hardSkillsSelecionadas.push(skill);
-    } else {
-      this.hardSkillsSelecionadas = this.hardSkillsSelecionadas.filter(
-        (x) => x !== skill
-      );
-    }
-  }
-
-  getHardSkillStyle(skill: string): string {
-    if (this.hardSkillsSelecionadas.indexOf(skill) !== -1) {
-      return 'btn-selecionada';
-    }
-
-    return 'btn-nao-selecionada';
   }
 
   // API do BUSCA CEP com ENDEREÇO PESSOA
@@ -141,24 +104,6 @@ export class FormsComponent implements OnInit {
     }
   }
 
-  // // API do BUSCA CEP sem ENDEREÇO PESSOA
-  // getViaCEP(cep: FocusEvent) {
-  //   if ((cep.target as HTMLInputElement)?.value) {
-  //     let inputCEP = (cep.target as HTMLInputElement)?.value;
-  //     const cepResponse = this.cepService.getCep(inputCEP);
-  //     cepResponse.subscribe((cepModel) => {
-  //       this.formPessoa.cepEndereco = cepModel.cep;
-  //       this.formPessoa.logradouroEndereco = cepModel.logradouro;
-  //       this.formPessoa.numeroEndereco = cepModel.numero;
-  //       this.formPessoa.bairroEndereco = cepModel.bairro;
-  //       this.formPessoa.cidadeEndereco = cepModel.localidade;
-  //       this.formPessoa.estadoEndereco = cepModel.uf;
-  //       this.showForm.next(true);
-  //       console.log(this.formPessoa);
-  //     });
-  //   }
-  // }
-
   // Formatação de DATA
   getDateFormated(): any {
     const date = new Date();
@@ -171,20 +116,18 @@ export class FormsComponent implements OnInit {
     if(!formPessoa.cursoPessoa?.idCurso) {
       return;
     }
-      
-    console.log(this.hardSkillsSelecionadas)
         this.hardSkillsSelecionadas.forEach(element => {
           this.todasSkillsSelecionadas.push(element)
         });
-    
+
         this.softSkillsSelecionadas.forEach(element => {
           this.todasSkillsSelecionadas.push(element)
         });
-        
+
         console.log(this.todasSkillsSelecionadas);
         this.formPessoa.caracteristicasPessoa = this.todasSkillsSelecionadas;
-    
-    
+
+
         this.pessoaService.postPessoa(formPessoa).subscribe((pessoa) => {
           if (!(typeof pessoa.idPessoa == 'undefined') && pessoa.idPessoa > 0) {
             this.okInsert = true;
@@ -202,11 +145,11 @@ export class FormsComponent implements OnInit {
             }, 5000);
           }
         });
-      
- 
 
-      
-      
+
+
+
+
 
   }
 
@@ -214,5 +157,5 @@ export class FormsComponent implements OnInit {
     this.formPessoa = new Pessoa({});
   }
 
-  
+
 }

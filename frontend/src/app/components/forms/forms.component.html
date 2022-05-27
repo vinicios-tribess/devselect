@@ -206,20 +206,20 @@
         <div class="form-group col-12 mt-4">
           <label for="curso">Curso</label>
           <select
-            name="curso"
+            name="cursoPessoa"
             class="form-control"
-            id="curso"
+            id="cursoPessoa"
             placeholder="Curso"
+            (change)="onChange($event)"
           >
             <option value="0" checked>Selecione...</option>
             <option *ngFor="let cursos of listaCursos$ | async" value="{{ cursos.idCurso }}">
-              {{ cursos.idCurso }} - {{ cursos.nomeCurso }} -
-              {{ cursos.descricaoCursoCurso }}
+              {{ cursos.idCurso }} - {{ cursos.nomeCurso }} - {{ cursos.descricaoCursoCurso }}
             </option>
           </select>
         </div>
 
-        <app-skills [softSkillsSelecionadas]="this.softSkillsSelecionadas"></app-skills>
+        <app-skills [softSkillsSelecionadas]="this.softSkillsSelecionadas" [hardSkillsSelecionadas]="this.hardSkillsSelecionadas"></app-skills>
       </div>
 
       <!-- botão  -->

@@ -1,7 +1,5 @@
 import { CursoService } from './../../services/curso/curso.service';
 import { Curso } from './../../models/curso/curso';
-import { ViaCepModel } from 'src/app/models/via-cep-modal/via-cep-model';
-import { Pessoa } from 'src/app/models/pessoa/pessoa';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -11,9 +9,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./forms-recrutador.component.scss'],
 })
 export class FormsRecrutadorComponent implements OnInit {
-  formCadastro: ViaCepModel = {};
-  formPessoa: Pessoa = new Pessoa({});
+
   formCurso: Curso = new Curso({});
+
+  softSkillsSelecionadas: string[] = [];
+  hardSkillsSelecionadas: string[] = [];
+  todasSkillsSelecionadas: string[] = [];
 
   okInsert: boolean = false;
 
@@ -22,22 +23,34 @@ export class FormsRecrutadorComponent implements OnInit {
   ngOnInit(): void {}
 
   addCurso(curso: Curso) {
-    this.cursoService.save(curso).subscribe((curso) => {
-      if (!(typeof curso.idCurso == 'undefined') && curso.idCurso > 0) {
-        this.okInsert = true;
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: `Curso "${curso.idCurso} - ${curso.nomeCurso}" criado com sucesso!`,
-          showConfirmButton: false,
-          timer: 2500,
+
+        this.hardSkillsSelecionadas.forEach(element => {
+          this.todasSkillsSelecionadas.push(element)
         });
-        setTimeout(() => {
-          this.okInsert = false;
-          this.resetForm();
-        }, 5000);
-      }
-    });
+
+        this.softSkillsSelecionadas.forEach(element => {
+          this.todasSkillsSelecionadas.push(element)
+        });
+
+        console.log(this.todasSkillsSelecionadas);
+        this.formCurso.caracteristicasCurso = this.todasSkillsSelecionadas;
+
+      this.cursoService.save(curso).subscribe((curso) => {
+        if (!(typeof curso.idCurso == 'undefined') && curso.idCurso > 0) {
+          this.okInsert = true;
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `Curso "${curso.idCurso} - ${curso.nomeCurso}" criado com sucesso!`,
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          setTimeout(() => {
+            this.okInsert = false;
+            this.resetForm();
+          }, 5000);
+        }
+      });
   }
 
   resetForm() {
